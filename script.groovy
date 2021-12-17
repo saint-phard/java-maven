@@ -9,6 +9,7 @@ def buildImage() {
   sh 'docker build -t phard/my-repo:jma2.0 .'
   sh "echo $PASS | docker login -u $USER --password-stdin"
   sh 'docker push phard/my-repo:jma2.0'
+  }
 }
 
 def deploy() {
