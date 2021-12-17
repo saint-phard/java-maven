@@ -19,7 +19,7 @@ pipeline {
         script {
           echo "building the docker image..."
           withCredentials([usernamePassword(credentialsId: 'dockerhub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')])
-          sh 'docker build -t phard/my-repo:jma2.0 .
+          sh 'docker build -t phard/my-repo:jma2.0 .'
           sh "echo $PASS | docker login -u $USER --password-stdin"
           sh 'docker push phard/my-repo:jma2.0'
         }
