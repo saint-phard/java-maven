@@ -18,7 +18,7 @@ pipeline {
       }
     }
     
-    stage("bdeploy") {
+    stage("deploy") {
       
       steps {
         echo 'deploying the application...'
