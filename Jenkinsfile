@@ -45,13 +45,15 @@ pipeline {
         message "choose your prefered enviroment"
         ok "Acknowledged"
         parameters {
-          choice(name: 'ENV', choices: ['dev','staging','prod'], description: 'environment')
+          choice(name: 'first', choices: ['dev','staging','prod'], description: 'environment')
+          choice(name: 'second', choices: ['dev','staging','prod'], description: 'environment')
         }
       }
       steps {
         script {
           gv.deployApp()
-          echo "Deploying to ${ENV}"
+          echo "Deploying to ${first}"
+          echo "Deploying to ${second}"
           }
       }
     }
