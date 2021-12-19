@@ -16,10 +16,11 @@ def deploy() {
   echo 'deploying the application...'
 
   sshagent(['ec2-jenkins-server-key']) {
+    sh 'scp docker-compose.yaml ec2-user@18.223.235.129:/home/ec2-user'
     sh 'ssh -o StrictHostKeyChecking=no ec2-user@18.223.235.129'
+    sh 'docker-compose -f docker-compose.yaml up -d
   }
-  sh 'docker run -p 3000:80 -d phard/my-repo:my-app-1.0'
-  
+ 
   
 }
 
