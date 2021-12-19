@@ -14,6 +14,12 @@ def buildImage() {
 
 def deploy() {
   echo 'deploying the application...'
+  def dockerCmd = 'docker run -p 3000:80 -d phard/my-repo:my-app-1.0'
+  sshagent(['ec2-jenkins-server-key']) {
+    sh "ssh -o StrictHostKeyChecking=no ec2-user@18.223.235.129 ${dockerCmd}"
+  }
+  
+  
 }
 
 return this
