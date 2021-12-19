@@ -18,7 +18,7 @@ def deploy() {
   sshagent(['ec2-jenkins-server-key']) {
     sh 'scp docker-compose.yaml ec2-user@18.223.235.129:/home/ec2-user'
     sh 'ssh -o StrictHostKeyChecking=no ec2-user@18.223.235.129'
-    sh 'ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose'
+    sh 'sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose'
     sh 'docker-compose -f docker-compose.yaml up -d'
   }
  
